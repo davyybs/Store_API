@@ -1,15 +1,16 @@
 <ion-content class="ion-padding">
   @if (products.length > 0) {
+    <div class="content">
       <ion-card class="ion-padding ion-margin-bottom">
         <ion-img [src]="products[currentIndex].image" alt="" class="ion-align-self-center ion-margin-bottom"></ion-img>
         <ion-card-title>{{products[currentIndex].title}}</ion-card-title>
         <ion-card-subtitle><ion-label color="primary">{{products[currentIndex].category}}</ion-label> | <ion-label color="success">R${{products[currentIndex].price}}</ion-label></ion-card-subtitle>
         <ion-card-content>{{products[currentIndex].description}}</ion-card-content>
       </ion-card>
-
-      <ion-toolbar>
-        <ion-button (click)="prevProduct()" slot="start">Anterior</ion-button>
-        <ion-button (click)="nextProduct()" slot="end">Próximo</ion-button>
+      <ion-toolbar color="#">
+        <ion-button (click)="prevProduct()" slot="start" routerDirection="back">Anterior</ion-button>
+        <ion-button (click)="nextProduct()" slot="end" routerDirection="forward">Próximo</ion-button>
       </ion-toolbar>
-    }
+    </div>
+  }
 </ion-content>
