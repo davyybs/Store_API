@@ -1,14 +1,17 @@
-<ion-content>
-  @if (products$ | async; as products) {
-    @for (p of products; track p.id) {
-      <ion-card>
-        <img [src]="p.image" alt="">
-        <ion-card-title>{{p.title}}</ion-card-title>
-        <ion-card-subtitle>{{p.category}} | R${{p.price}}</ion-card-subtitle>
-        <ion-card-content>{{p.description}}</ion-card-content>
-      </ion-card>
+<ion-content class="ion-padding">
+  <ion-button (click)="alterView()" expand="block" class="ion-margin-bottom">{{showProducts ? "Esconder produtos" : "Exibir produtos"}}</ion-button>
+  @if (showProducts) {
+    @if (products$ | async; as products) {
+      @for (p of products; track p.id) {
+        <ion-card class="ion-padding ion-margin-bottom">
+          <ion-img [src]="p.image" alt="" class="ion-align-self-center ion-margin-bottom"></ion-img>
+          <ion-card-title>{{p.title}}</ion-card-title>
+          <ion-card-subtitle><ion-label color="primary">{{p.category}}</ion-label> | <ion-label color="success">R${{p.price}}</ion-label></ion-card-subtitle>
+          <ion-card-content>{{p.description}}</ion-card-content>
+        </ion-card>
+      }
+    } @else {
+      <p>Carregando produtos...</p>
     }
   }
-  <ion-button routerDirection="back"></ion-button>
-  <ion-button routerDirection="forward"></ion-button>
 </ion-content>

@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { IonContent, IonCard, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton } from '@ionic/angular/standalone';
-import { ProductsService } from '../services/products.service';
+import { IonContent, IonCard, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonImg, IonLabel } from '@ionic/angular/standalone';
+import { ProductsService, Products } from '../services/products.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
@@ -8,15 +8,20 @@ import { CommonModule } from '@angular/common';
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss'],
-  imports: [IonCard, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonContent, CommonModule],
+  imports: [IonLabel, IonImg, IonCard, IonCardTitle, IonCardSubtitle, IonCardContent, IonButton, IonContent, CommonModule],
 })
 export class Tab3Page implements OnInit {
-   private productsService = inject(ProductsService);
+  private productsService = inject(ProductsService);
+  showProducts: boolean = false;
 
-  products$!: Observable<any>;
+  products$!: Observable<Products[]>;
+
 
   ngOnInit() {
     this.products$ = this.productsService.getProducts();
   }
 
+  alterView() {
+    this.showProducts = !this.showProducts;
+  }
 }
