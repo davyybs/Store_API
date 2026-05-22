@@ -8,8 +8,8 @@
         <ion-card-content>{{products[currentIndex].description}}</ion-card-content>
       </ion-card>
       <ion-toolbar color="#">
-        <ion-button (click)="prevProduct()" slot="start" routerDirection="back">Anterior</ion-button>
-        <ion-button (click)="nextProduct()" slot="end" routerDirection="forward">Próximo</ion-button>
+        <ion-button (click)="prevProduct()" slot="start" [disabled]="currentIndex == 0" routerDirection="back">Anterior</ion-button>
+        <ion-button (click)="nextProduct()" slot="end" [disabled]="currentIndex == products.length - 1" routerDirection="forward">Próximo</ion-button>
       </ion-toolbar>
     </div>
   }
